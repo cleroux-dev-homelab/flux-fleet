@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: apps-system
+
+resources:
+  - ./namespace.yaml
+  - ./source.yaml
+  - ./ks.yaml
+
+labels:
+  - pairs:
+      toolkit.fluxcd.io/tenant: apps
+
+secretGenerator:
+  - name: flux-apps
+    files:
+      - password=../../github_token
+    literals:
+      - username=git
+
+configurations:
+  - kustomizeconfig.yaml

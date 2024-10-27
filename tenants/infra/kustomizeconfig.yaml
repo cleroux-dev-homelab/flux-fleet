@@ -1,0 +1,12 @@
+---
+nameReference:
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - path: spec/decryption/secretRef/name
+        kind: Kustomization
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - path: spec/secretRef/name
+        kind: GitRepository

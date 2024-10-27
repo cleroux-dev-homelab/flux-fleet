@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-infra-tenant
+  namespace: flux-system
+spec:
+  # The kustomize-controller handles the tenant deployment
+  serviceAccountName: kustomize-controller
+  interval: 5m
+  retryInterval: 30s
+  timeout: 4m
+  wait: true
+  prune: true
+  path: ./tenants/infra
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  # Use postBuild to replace values in the configs
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info

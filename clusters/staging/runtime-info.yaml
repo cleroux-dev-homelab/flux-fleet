@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flux-runtime-info
+  namespace: flux-system
+  labels:
+    toolkit.fluxcd.io/runtime: "true"
+  annotations:
+    kustomize.toolkit.fluxcd.io/ssa: "Merge"
+data:
+  CLUSTER_NAME: "kind"
+  ENVIRONMENT: "staging"
+  VARIANT: "kind"
+  TIMEZONE: "America/Toronto"
+  INTERNAL_DOMAIN: "cleroux.dev"
+  EXTERNAL_DOMAIN: "cleroux.com"
