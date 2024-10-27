@@ -61,6 +61,7 @@ EOF
 flux bootstrap github \
     --components-extra=image-reflector-controller,image-automation-controller \
     --token-auth \
+    --read-write-key \
     --owner=$GIT_USER \
     --repository=$GIT_REPOSITORY \
     --branch=$GIT_BRANCH \
