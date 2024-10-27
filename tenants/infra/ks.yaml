@@ -1,0 +1,24 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-system
+spec:
+  # The infra tenant is the only one sharing the flux-system ns
+  targetNamespace: flux-system
+  serviceAccountName: flux-infra
+  interval: 5m
+  retryInterval: 30s
+  timeout: 4m
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-infra
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: flux-runtime-info
