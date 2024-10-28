@@ -58,6 +58,12 @@ EOF
 #     --set k8sServicePort=${API_SERVER_PORT} # --set socketLB.hostNamespaceOnly=true \
 
 # Bootstrapping the cluster
+kubectl create ns flux-system
+sops -d age.agekey |
+    kubectl create secret generic sops-age \
+        --namespace=flux-system \
+        --from-file=age.agekey=/dev/stdin
+
 flux bootstrap github \
     --components-extra=image-reflector-controller,image-automation-controller \
     --token-auth \
