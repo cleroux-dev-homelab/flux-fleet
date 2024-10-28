@@ -19,7 +19,7 @@ spec:
   interval: 1m0s
   retryInterval: 30s
   timeout: 30s
-  path: ./deploy
+  path: ./components
   wait: true
   prune: true
   sourceRef:
