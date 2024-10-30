@@ -11,8 +11,8 @@ metadata:
 data:
   ENVIRONMENT: "staging"
   TIMEZONE: "America/Toronto"
-  INTERNAL_DOMAIN: "staging.cleroux.dev"
+  INTERNAL_DOMAIN: "cleroux.dev"
+  EXTERNAL_DOMAIN: "cleroux.com"
 
   METALLB_IPV4_LB_RANGE: "172.18.255.200-172.18.255.250"
   METALLB_IPV4_K8S_GATEWAY_ADDR: "172.18.255.200"
-  NGINX_IPV4_INGRESS_ADDR: "172.18.255.201"
