@@ -11,15 +11,12 @@ if [ -z "$GITHUB_TOKEN" ]; then
     GITHUB_TOKEN=$(sops -d ./github_token)
     export GITHUB_TOKEN
 fi
-
-API_SERVER_PORT=6443
 ###########################################
 
 # Create the kind-cluster
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
-name: staging
 nodes:
   - role: control-plane
     kubeadmConfigPatches:
@@ -35,12 +32,6 @@ nodes:
     - containerPort: 443
       hostPort: 443
       protocol: TCP
-  - role: worker
-  - role: worker
-# networking:
-  # disableDefaultCNI: true
-  # kubeProxyMode: none
-  # apiServerPort: $API_SERVER_PORT
 EOF
 
 # Installing cilium on the kind-cluster
