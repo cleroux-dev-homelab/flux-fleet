@@ -13,5 +13,5 @@ data:
   ENVIRONMENT: "prod"
   VARIANT: "nixos"
   TIMEZONE: "America/Toronto"
-  INTERNAL_DOMAIN: "cleroux.dev"
-  EXTERNAL_DOMAIN: "cleroux.com"
+  INTERNAL_DOMAIN: "cleroux.lan"
+  EXTERNAL_DOMAIN: "cleroux.dev"
