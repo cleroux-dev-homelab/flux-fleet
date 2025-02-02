@@ -8,5 +8,5 @@ spec:
   ref:
     branch: main
   secretRef:
-    name: flux-infra
+    name: flux-system
   url: https://github.com/cleroux-dev-homelab/flux-infra.git

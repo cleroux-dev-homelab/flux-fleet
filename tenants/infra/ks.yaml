@@ -20,4 +20,3 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: flux-runtime-info
-        namespace: flux-system
