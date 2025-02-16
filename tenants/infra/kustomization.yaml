@@ -4,9 +4,9 @@ kind: Kustomization
 namespace: flux-system
 
 resources:
-  - ./source.yaml
-  - ./rbac.yaml
   - ./ks.yaml
+  - ./rbac.yaml
+  - ./source.yaml
 
 labels:
   - pairs:
