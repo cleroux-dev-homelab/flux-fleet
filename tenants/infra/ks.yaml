@@ -20,3 +20,4 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: flux-runtime-info
+  path: deploy/${ENVIRONMENT}
