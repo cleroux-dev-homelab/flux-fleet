@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/cleroux-dev-homelab/flux-fleet
+  url: https://github.com/cleroux-dev-homelab/flux-fleet.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
