@@ -15,8 +15,7 @@
           packages = with pkgs; [
             age
             fluxcd
-            k0sctl
-            k9s
+            gnumake
             kind
             kubectl
             sops

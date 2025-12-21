@@ -1,7 +1,7 @@
 creation_rules:
-  - path_regex: github_token
+  - path_regex: keys/github_token
     age: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
-  - path_regex: age.agekey
+  - path_regex: keys/age.agekey
     age: age1w25xrwp4207snq0nr7ext6slkph3n5zw0u6t358k46p7v9zx0udstxpw5c
   - path_regex: .*.yaml
     encrypted_regex: ^(data|stringData)$
