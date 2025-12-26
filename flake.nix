@@ -16,7 +16,6 @@
             age
             fluxcd
             gnumake
-            kind
             kubectl
             sops
             ssh-to-age
