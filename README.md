@@ -2,10 +2,10 @@
 
 My Flux Fleet repository
 
-Currently migrating to Kubernetes, run the test cluster with
-
 ## Running the cluster
 
+Bootstrap Flux on the current kubectl context (the production cluster):
+
 ```bash
-./bootstrap-staging.sh
+make flux
 ```
