@@ -9,7 +9,7 @@ metadata:
   annotations:
     kustomize.toolkit.fluxcd.io/ssa: "Merge"
 data:
-  CLUSTER_NAME: "production"
+  CLUSTER_NAME: "homelab"
   ENVIRONMENT: "prod"
   VARIANT: "nixos"
   TIMEZONE: "America/Toronto"

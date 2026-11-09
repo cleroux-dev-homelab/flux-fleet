@@ -39,7 +39,7 @@ flux:
 		--repository=flux-fleet \
 		--branch=main \
 		--token-auth \
-		--path=clusters/production # TODO: use CLUSTER_NAME once local cluster is standardized
+		--path=clusters/homelab # TODO: use CLUSTER_NAME once local cluster is standardized
 
 .PHONY: help
 # From: https://gist.github.com/klmr/575726c7e05d8780505a
