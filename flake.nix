@@ -15,8 +15,10 @@
           packages = with pkgs; [
             age
             fluxcd
+            fluxcd-operator
             gnumake
             kubectl
+            kubernetes-helm
             sops
             ssh-to-age
             yq

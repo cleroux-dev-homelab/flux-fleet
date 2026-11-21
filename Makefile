@@ -9,7 +9,7 @@ export GITHUB_TOKEN
 
 .SILENT: flux
 .PHONY: flux
-## Bootstrap fluxCD on the current-context cluster
+## Install the Flux Operator and Flux on the current-context cluster
 flux:
 	# Get CLUSTER_NAME from kubeconfig (fail if empty)
 	CLUSTER_NAME="$$(kubectl config view -o yaml \
@@ -31,15 +31,20 @@ flux:
 			--namespace=flux-system \
 			--from-file=age.agekey=/dev/stdin | kubectl apply -f -
 
-	# Bootstrapping the cluster using a GitHub PAT
-	flux bootstrap github \
-		--registry=ghcr.io/fluxcd \
-		--components-extra=image-reflector-controller,image-automation-controller \
-		--owner=cleroux-dev-homelab \
-		--repository=flux-fleet \
-		--branch=main \
-		--token-auth \
-		--path=clusters/homelab # TODO: use CLUSTER_NAME once local cluster is standardized
+	# The GitHub PAT the Git sources pull with, and the image automations push with
+	kubectl create secret generic flux-system \
+			--dry-run=client -o yaml \
+			--namespace=flux-system \
+			--from-literal=username=git \
+			--from-literal=password="$$GITHUB_TOKEN" | kubectl apply -f -
+
+	# Flux then manages the operator itself, from clusters/homelab/flux-operator.yaml
+	helm upgrade --install flux-operator oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator \
+		--namespace flux-system \
+		--wait
+
+	# The operator installs Flux, which syncs clusters/homelab
+	kubectl apply -f clusters/homelab/flux-instance.yaml # TODO: use CLUSTER_NAME once local cluster is standardized
 
 .PHONY: help
 # From: https://gist.github.com/klmr/575726c7e05d8780505a
